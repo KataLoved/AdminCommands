@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<AssemblyName>AdminCommands</AssemblyName>
+		<Description>Expanded Server Chat Commands.</Description>
+		<Version>1.0.0</Version>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<LangVersion>latest</LangVersion>
+		<RootNamespace>AdminCommands</RootNamespace>
+		<BepInExPluginGuid>AdminCommands</BepInExPluginGuid>
+		<Authors>Willis</Authors>
+	</PropertyGroup>
+	<!-- Copy CommunityCommands.dll to /dist -->
+	<Target Name="Thunderstore Copy to Dist" AfterTargets="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
+		<Copy SourceFiles="$(OutDir)\AdminCommands.dll" DestinationFolder="$(ProjectDir)/dist" />
+	</Target>
+	<ItemGroup>
+	    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0" />
+		<PackageReference Include="VRising.Bloodstone" Version="0.1.*" />
+		<PackageReference Include="VRising.Unhollowed.Client" Version="0.6.5.57575090" />
+		<PackageReference Include="VRising.VampireCommandFramework" Version="0.8.*" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="BepInEx.Core">
+	    <HintPath>E:\Program Files (x86)\Steam\steamapps\common\VRising\BepInEx\core\BepInEx.Core.dll</HintPath>
+	  </Reference>
+	  <Reference Include="BepInEx.Unity.Common">
+	    <HintPath>E:\Program Files (x86)\Steam\steamapps\common\VRising\BepInEx\core\BepInEx.Unity.Common.dll</HintPath>
+	  </Reference>
+	  <Reference Include="BepInEx.Unity.IL2CPP">
+	    <HintPath>E:\Program Files (x86)\Steam\steamapps\common\VRising\BepInEx\core\BepInEx.Unity.IL2CPP.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+	<Import Project="..\Shared\Shared.projitems" Label="Shared" />
+</Project>
